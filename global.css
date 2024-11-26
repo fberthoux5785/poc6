@@ -1,0 +1,123 @@
+/* Variáveis de Tema */
+:root {
+  --background-light: #f0f0f0;
+  --foreground-light: #1a1a24;
+  --primary-light: #db3d2e;
+  --secondary-light: #bababa;
+  --unavailable-light: #1a1a24;
+  --text-light: #f0f0f0;
+
+  --background-dark: #1a1a24;
+  --foreground-dark: #f0f0f0;
+  --primary-dark: #cd4a3e;
+  --secondary-dark: #505050;
+  --unavailable-dark: #505050;
+  --text-dark: #f0f0f0;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--background-light);
+  color: var(--foreground-light);
+  transition: all 0.3s ease-in-out;
+}
+
+header {
+  padding: 1rem;
+  text-align: center;
+  background-color: var(--primary-light);
+  color: var(--text-light);
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+button {
+  border: none;
+  padding: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+/* Assentos */
+.seat-container {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 10px;
+  margin: 1rem auto;
+  max-width: 300px;
+}
+
+.seat {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--foreground-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--foreground-light);
+  background-color: var(--background-light);
+  border-radius: 5px;
+}
+
+.seat.available {
+  cursor: pointer;
+}
+
+.seat.selected {
+  background-color: var(--primary-light);
+  color: var(--text-light);
+}
+
+.seat.unavailable {
+  background-color: var(--unavailable-light);
+  cursor: not-allowed;
+}
+
+/* Resumo */
+.summary {
+  margin: 1rem;
+}
+
+.summary button {
+  background-color: var(--primary-light);
+  color: var(--text-light);
+  padding: 0.7rem 1.5rem;
+  font-size: 1.1rem;
+  border-radius: 5px;
+}
+
+.summary button:hover {
+  background-color: var(--secondary-light);
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: var(--secondary-light);
+  color: var(--foreground-light);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .seat-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  button {
+    font-size: 0.9rem;
+  }
+
+  .summary button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+}
