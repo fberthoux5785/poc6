@@ -1,5 +1,4 @@
 # POC6
-# **Poc6**
 
 Bem-vindo ao **Cinema A Forja**, um projeto desenvolvido para criar uma interface interativa de reserva de assentos para cinemas. O objetivo é oferecer uma experiência funcional, intuitiva e agradável, além de mostrar como implementar temas claro e escuro e responsividade para diferentes dispositivos.
 
