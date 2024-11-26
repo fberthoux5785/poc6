@@ -1,5 +1,6 @@
 import { useState } from "react";
-import Header from "../components/Header";
+import Head from "next/head";
+
 import SeatSelector from "../components/SeatSelector";
 import PurchaseSummary from "../components/PurchaseSummary";
 
@@ -14,10 +15,17 @@ const movieData = {
   })),
 };
 
-const Home = () => {
+export default function Home() {
   const [seats, setSeats] = useState(
     movieData.assentos.map((seat) => ({ ...seat, selected: false }))
   );
+
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleTheme = () => {
+    setDarkMode(!darkMode);
+    document.body.className = darkMode ? "light-theme" : "dark-theme";
+  };
 
   const handleSelect = (number) => {
     setSeats((prevSeats) =>
@@ -37,9 +45,25 @@ const Home = () => {
   };
 
   return (
-    <div>
-      <Header />
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
+    <>
+      <Head>
+        <title>Cinema Seat Booking</title>
+      </Head>
+      <header style={{ padding: "1rem", textAlign: "center" }}>
+        <h1>Cinema Seat Booking</h1>
+        <button
+          onClick={toggleTheme}
+          style={{
+            padding: "0.5rem 1rem",
+            marginTop: "1rem",
+            cursor: "pointer",
+            borderRadius: "5px",
+          }}
+        >
+          {darkMode ? "Modo Claro" : "Modo Escuro"}
+        </button>
+      </header>
+      <main style={{ display: "flex", justifyContent: "space-around", padding: "1rem" }}>
         <SeatSelector seats={seats} onSelect={handleSelect} />
         <PurchaseSummary
           movie={movieData}
@@ -47,9 +71,7 @@ const Home = () => {
           total={total}
           onPurchase={handlePurchase}
         />
-      </div>
-    </div>
+      </main>
+    </>
   );
-};
-
-export default Home;
+}
