@@ -10,7 +10,7 @@ const movieData = {
   preco: 25.0,
   assentos: Array.from({ length: 60 }, (_, i) => ({
     numero: i + 1,
-    disponivel: i % 10 !== 0, // Apenas exemplo, define alguns como indisponíveis
+    disponivel: i % 10 !== 0, 
   })),
 };
 
